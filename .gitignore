@@ -1,0 +1,10 @@
+.venv/
+native/
+outputs/
+inputs/*
+!inputs/.gitkeep
+*.log
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/

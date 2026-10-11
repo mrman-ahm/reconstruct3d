@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+set -euo pipefail
+PROJECT_ROOT="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+if [[ -z "${COLMAP_BIN:-}" && -x "$PROJECT_ROOT/native/install/bin/colmap" ]]; then
+  export COLMAP_BIN="$PROJECT_ROOT/native/install/bin/colmap"
+fi
+if [[ -z "${OPENMVS_BIN:-}" && -x "$PROJECT_ROOT/native/install/bin/InterfaceCOLMAP" ]]; then
+  export OPENMVS_BIN="$PROJECT_ROOT/native/install/bin"
+fi
+if [[ -x "$PROJECT_ROOT/.venv/bin/python" ]]; then
+  PYTHON="$PROJECT_ROOT/.venv/bin/python"
+else
+  PYTHON=python3
+fi
+exec "$PYTHON" "$PROJECT_ROOT/reconstruct.py" "$@"

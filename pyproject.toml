@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "reconstruct3d-video"
+version = "0.1.0"
+description = "CPU-capable prerecorded video to 3D reconstruction research prototype"
+requires-python = ">=3.10"
+dependencies = [
+  "numpy>=1.24",
+  "opencv-python-headless>=4.8,<6",
+]
+
+[project.scripts]
+reconstruct = "reconstruct3d.cli:main"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
